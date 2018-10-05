@@ -1,6 +1,8 @@
 package com.zl.sell.pojo;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +10,7 @@ import java.util.Date;
 
 
 @Entity
+@DynamicUpdate
 @Data
 public class ProductCategory {
 
@@ -19,8 +22,11 @@ public class ProductCategory {
 
     private Integer categoryType;
 
-    private Date createTime;
+    public ProductCategory() {
+    }
 
-    private Date updateTime;
-
+    public ProductCategory(String categoryName, Integer categoryType) {
+        this.categoryName = categoryName;
+        this.categoryType = categoryType;
+    }
 }
